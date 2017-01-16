@@ -14,6 +14,9 @@ import Signup from './components/auth/Signup';
 import Welcome from './components/Welcome';
 import Feature from './components/Feature';
 import RestaurantIndex from './components/restaurants';
+import RestaurantDetails from './components/restaurants/details';
+//css
+
 import './index.css';
 
 import reducers from './reducers';
@@ -46,6 +49,7 @@ ReactDOM.render(
           <Route path="signup" component={Signup} />
           <Route path="feature" component={RequireAuth(Feature)} />
           <Route path="restaurants" component={RequireAuth(RestaurantIndex)} />
+          <Route path="restaurants/:id" component={RequireAuth(RestaurantDetails)} />
         </Route>
       </Router>
     </Provider>

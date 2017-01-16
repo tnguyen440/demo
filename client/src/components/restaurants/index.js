@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchRestaurant } from '../../actions/restaurantActions';
 import {bindActionCreators} from 'redux';
-
+//import { Link } from 'react-router';
 //material-ui
 import CircularProgress from 'material-ui/CircularProgress';
+import Divider from 'material-ui/Divider';
+
+//react-bootstrap
+import {ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class RestaurantIndex extends Component {
+
   componentWillMount() {
     this.props.actions.fetchRestaurant();
     //console.log(this.props.actions.fetchRestaurant());
   }
-
 
   render() {
     const {restaurants} = this.props;
@@ -20,10 +24,15 @@ class RestaurantIndex extends Component {
     }
     return(
     <div className="restaurants-container">
-      <p>List of restaurants</p>
-      <ul>
-      {restaurants.map(restaurant => <li key={restaurant.restaurant_id}>{restaurant.address.street}</li>)}
-      </ul>
+      <h3>List of restaurants</h3>
+      <ListGroup>
+      {restaurants.map(restaurant => <div key={restaurant.restaurant_id}>
+        <ListGroupItem
+          header={restaurant.name}>
+          <span>Cuisine: {restaurant.cuisine}</span>
+        </ListGroupItem><Divider /></div>
+      )}
+      </ListGroup>
     </div>
     );
 

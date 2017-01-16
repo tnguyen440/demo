@@ -25,9 +25,8 @@ export function fetchRestaurant() {
         }
       )
       .catch((response) => {
-        console.log(response);
         dispatch({
-          type: types.FETCH_RESTAURANT_FAIL,
+          type: types.FETCH_RESTAURANT_FAILURE,
           payload: response.response.data.error
         });
       });
